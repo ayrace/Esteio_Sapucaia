@@ -1,0 +1,90 @@
+﻿Node,Cidade,Regiao,Bairro,HV,Endereco,Latitude,Longitude,Precisao_Bairro,Fonte_Bairro,Observacao
+EIO42,ESTEIO,A VALIDAR,A VALIDAR,A VALIDAR,,-29.852171,-51.177125,SEM TOPOLOGIA,presente no XPT; ausente na topologia,Validar HV e bairro. Posição temporária no centro de Esteio.
+EIO01,ESTEIO,HV01,SÃO SEBASTIÃO,HV01,"RUA BENTO GONÇALVES,Nº954",-29.845863,-51.180264,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO06,ESTEIO,HV01,CENTRO / SÃO SEBASTIÃO,HV01,"RUA RIO GRANDE,Nº2257",-29.843878,-51.174202,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO11,ESTEIO,HV01,SÃO SEBASTIÃO,HV01,"RUA EZEQUIEL,Nº174",-29.845529,-51.181973,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO18,ESTEIO,HV01,LIBERDADE,HV01,"RUA DONA ISABEL,Nº749",-29.85031,-51.190894,CONFIRMADO LOGRADOURO,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO29,ESTEIO,HV01,CENTRO / SÃO SEBASTIÃO,HV01,"RUA RIO GRANDE,Nº2195",-29.845599,-51.174698,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO40,ESTEIO,HV01,SÃO SEBASTIÃO / MORADA,HV01,R.MORADA II/R.BENTO GONÇALVES,-29.846375,-51.185998,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO41,ESTEIO,HV01,CENTRO / SÃO SEBASTIÃO,HV01,"RUA RIO GRANDE,Nº2332",-29.843991,-51.173863,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO05,ESTEIO,HV02,CENTRO,HV02,"RUA MAURÍCIO CARDOSO,Nº1208",-29.851306,-51.178903,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO10,ESTEIO,HV02,CENTRO,HV02,RUA FERNANDO FERRARI/AV. PADRE CLARET,-29.851443,-51.178061,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO13,ESTEIO,HV02,CENTRO,HV02,"RUA PORTO FONSECA,Nº131",-29.85123,-51.177091,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO22,ESTEIO,HV02,CENTRO,HV02,RUA DOS FERROVIÁRIOS/AV.PRESIDENTE VARGAS,-29.850075,-51.177273,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO24,ESTEIO,HV02,CENTRO,HV02,"RUA RIO GRANDE,Nº1345",-29.850173,-51.17716,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO25,ESTEIO,HV02,CENTRO,HV02,"RUA DOS FERROVIÁRIOS,Nº488",-29.850686,-51.178571,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO32,ESTEIO,HV02,CENTRO,HV02,"RUA FERNANDO FERRARI,Nº1342",-29.851782,-51.178445,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO34,ESTEIO,HV02,CENTRO,HV02,RUA PEDRO LERBACH/AV. PRESIDENTE VARGAS,-29.851131,-51.176852,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO02,ESTEIO,HV03,OLÍMPICA,HV03,R.VEREADOR ERNESTO MENEZES/R.ELÓI CHAVES,-29.858724,-51.151495,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO09,ESTEIO,HV03,PARQUE AMADOR / OLÍMPICA,HV03,"RUA NOVO HAMBURGO,Nº1716/R.SÃO FRANCISCO",-29.85439,-51.150681,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO15,ESTEIO,HV03,JARDIM PLANALTO,HV03,"RUA MARCILIO DIAS,Nº11",-29.860156,-51.139976,CONFIRMADO LOGRADOURO,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO17,ESTEIO,HV03,SANTO INÁCIO,HV03,R.LUIZ FRANCISCO GOIZONE/AV. DAS AMERICAS,-29.853987,-51.142818,CONFIRMADO LOGRADOURO,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO19,ESTEIO,HV03,SANTO INÁCIO,HV03,"AVENIDA DO CARNAVAL,Nº330",-29.854309,-51.141757,CONFIRMADO LOGRADOURO,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO33,ESTEIO,HV03,OLÍMPICA,HV03,"R.REINALDO GRAFF MARQUINHO,Nº36",-29.858203,-51.152121,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO35,ESTEIO,HV03,OLÍMPICA,HV03,R.ALBERTO PASQUALINE/R.JOÃO SIMÕES NETO,-29.858966,-51.152184,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO44,ESTEIO,HV03,SANTO INÁCIO / OLÍMPICA,HV03,RUA GOVERNADOR ERNESTO DORNELES,-29.855408,-51.146048,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO04,ESTEIO,HV04,PARQUE AMADOR,HV04,"RUA QUARAÍ,Nº165",-29.851563,-51.152652,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO12,ESTEIO,HV04,PARQUE AMADOR,HV04,RUA NOVO HAMBURGO,-29.853373,-51.152903,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO14,ESTEIO,HV04,PARQUE AMADOR,HV04,"RUA QUARAÍ,Nº97",-29.851835,-51.152318,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO23,ESTEIO,HV04,PARQUE AMADOR,HV04,"AVENIDA PADRE CLARET,Nº2500",-29.853248,-51.151722,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO30,ESTEIO,HV04,CENTRO,HV04,"RUA 24 DE AGOSTO,Nº2674",-29.851552,-51.179084,CONFIRMADO LOGRADOURO,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO31,ESTEIO,HV04,OLÍMPICA,HV04,"RUA SANTANA,Nº170",-29.858787,-51.152844,CONFIRMADO LOGRADOURO,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO43,ESTEIO,HV04,PARQUE AMADOR,HV04,"RUA PADRE FELIPE,Nº1908",-29.852608,-51.150834,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO07,ESTEIO,HV05,TAMANDARÉ / TEÓPOLIS,HV05,RUA SÃO DOMINGOS/RUA VILA LOBOS,-29.837808,-51.162581,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO08,ESTEIO,HV05,TAMANDARÉ / TEÓPOLIS,HV05,"RUA SOLEDADE,Nº1300",-29.836049,-51.162218,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO16,ESTEIO,HV05,TAMANDARÉ / TEÓPOLIS,HV05,"RUA FRANCISCO ALVES, Nº 75",-29.836788,-51.162612,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO20,ESTEIO,HV05,TAMANDARÉ / TEÓPOLIS,HV05,"RUA PINTO BANDEIRA,Nº43",-29.838083,-51.162068,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO26,ESTEIO,HV05,TAMANDARÉ / TEÓPOLIS,HV05,"RUA VILA LOBOS,Nº1142",-29.837772,-51.162417,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO27,ESTEIO,HV05,VILA TEÓPOLIS,HV05,"RUA RIO PARDO,Nº840",-29.838231,-51.16787,CONFIRMADO LOGRADOURO,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO38,ESTEIO,HV05,TAMANDARÉ / TEÓPOLIS,HV05,"AVENIDA SENADOR SALGADO FILHO,Nº1840",-29.836441,-51.161671,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO39,ESTEIO,HV05,TAMANDARÉ / TEÓPOLIS,HV05,"AV. LUIS PASTEUR,Nº3622/AV.SENADOR SALGADO FILHO",-29.838094,-51.161499,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO03,ESTEIO,HV06,CENTRO,HV06,PELOTAS Nº 485,-29.850528,-51.17905,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO21,ESTEIO,HV06,CENTRO,HV06,"RIO GRANDE, Nº 699",-29.851116,-51.178693,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO28,ESTEIO,HV06,CENTRO,HV06,SALGADO FILHO  / FERNANDO FERRARI,-29.850326,-51.178489,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO36,ESTEIO,HV06,CENTRO,HV06,"CRUZ ALTA / PADRE CLARET, Nº 555",-29.851133,-51.177515,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+EIO37,ESTEIO,HV06,CENTRO,HV06,"LAJEADO, Nº 127",-29.850177,-51.177119,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+NVE01,ESTEIO,HV06,NOVO ESTEIO,HV06,"RUA RUI BARBOSA, Nº 201",-29.842058,-51.18889,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+NVE02,ESTEIO,HV06,NOVO ESTEIO,HV06,"AVELINO ANTONIO ZANTA, Nº 67",-29.841117,-51.188964,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+NVE03,ESTEIO,HV06,NOVO ESTEIO,HV06,"ASCELINO ALVES DA SILVA, Nº 457",-29.841921,-51.188816,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+CAM01,SAPUCAIA DO SUL,HV07,PASQUALINI,HV07,"JOSÉ LOREIRO DA SILVA, Nº 166",-29.836753,-51.134856,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+CAM03,SAPUCAIA DO SUL,HV07,CAMBOIM,HV07,"RIO GRANDE DO NORTE, Nº 375",-29.829005,-51.136522,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+CCP02,SAPUCAIA DO SUL,HV07,CAPÃO DA CRUZ,HV07,RUA LIBERO BADORO X RIO DE JANEIRO,-29.839087,-51.14484,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+CCP03,SAPUCAIA DO SUL,HV07,CAPÃO DA CRUZ,HV07,"RUA LIBERO BADARO,Nº 122",-29.837644,-51.144807,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+NSP01,SAPUCAIA DO SUL,HV07,NOVA SAPUCAIA,HV07,"AMÉRICO VESPÚCIO, Nº 591",-29.83884,-51.12927,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+NSP02,SAPUCAIA DO SUL,HV07,NOVA SAPUCAIA,HV07,"JOÃO PEREIRA, Nº 3023",-29.838769,-51.128245,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+PAS01,SAPUCAIA DO SUL,HV07,PASQUALINI,HV07,RUA DO PASSEIO/ CIENI VASCONCELOS DE OLIVEIRA ,-29.837236,-51.13332,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+PAS02,SAPUCAIA DO SUL,HV07,PASQUALINI,HV07,"NORDESTE/RUBENS BRAUM, Nº 456",-29.838098,-51.133229,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+PAS03,SAPUCAIA DO SUL,HV07,PASQUALINI,HV07,Rua Anjo Gabriel (CONDOMÍNIO),-29.836359,-51.133674,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+PAS04,SAPUCAIA DO SUL,HV07,NOVA SAPUCAIA / VARGAS,HV07,AVENIDA AMÉRICO VESPÚCIO,-29.836349,-51.130455,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+CAM04,SAPUCAIA DO SUL,HV08,CAMBOIM,HV08,"AVENIDA JUSTINO CAMBOIM, Nº 714",-29.82761,-51.135165,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+CNT05,SAPUCAIA DO SUL,HV08,JARDIM,HV08,GENERAL DALTRO FILHO/ ASSIS BRASIL,-29.831578,-51.144455,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+CNT09,SAPUCAIA DO SUL,HV08,CENTRO,HV08,CAPITÃO CAMBOIM/ AVENIDA JOÃO P.  De Vargas,-29.829325,-51.152615,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+JDM01,SAPUCAIA DO SUL,HV08,JARDIM,HV08,"SEPÉ TIARAJU, Nº 412 X  MARIANO CANTO",-29.832253,-51.145029,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+JDM02,SAPUCAIA DO SUL,HV08,JARDIM,HV08, PEDRO SOUZA X ARQUIBALDO VELHINHO,-29.832913,-51.144608,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+JDM03,SAPUCAIA DO SUL,HV08,VARGAS,HV08,"DONA AMÉLIA LUCAS, Nº 201",-29.832284,-51.129364,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+JDM04,SAPUCAIA DO SUL,HV08,SETE,HV08,"RUA EUVADO DA ROSA, Nº 235",-29.825001,-51.141541,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+JDM05,SAPUCAIA DO SUL,HV08,JARDIM,HV08,"ARQUIBALDO VELHINHO, Nº 1230",-29.831916,-51.146065,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+CAM02,SAPUCAIA DO SUL,HV09,CAMBOIM,HV09,RUA ITALIA BAIERLE X ESQUINA MATO GROSSO,-29.828538,-51.135962,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+CNT01,SAPUCAIA DO SUL,HV09,CENTRO,HV09,CORONEL SERAFIM PEREIRA,-29.831637,-51.151701,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+CNT03,SAPUCAIA DO SUL,HV09,PARAÍSO / CENTRO,HV09,"LAURENTINO JULIANO, Nº 266",-29.829376,-51.148414,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+CNT04,SAPUCAIA DO SUL,HV09,PARAÍSO,HV09,ALAGOAS X AMAZONAS,-29.830898,-51.146279,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+CNT06,SAPUCAIA DO SUL,HV09,CENTRO,HV09,"RUA MANOEL SERAFIM,Nº104",-29.831162,-51.152381,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+PRI01,SAPUCAIA DO SUL,HV09,PRIMOR,HV09,ALFREDO JULIANO Nº 341,-29.831501,-51.157086,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+PRI02,SAPUCAIA DO SUL,HV09,PRIMOR,HV09,GUSTAVO JOHANN X CEL GENVINO,-29.831769,-51.156608,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+PRI03,SAPUCAIA DO SUL,HV09,PRIMOR,HV09,ALFREDO JULIANO Nº 627,-29.831584,-51.157207,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+CNT02,SAPUCAIA DO SUL,HV10,CENTRO,HV10,AVENIDA INDENPENDENCIA/ DESEMBARGADOR DANTAS,-29.831032,-51.151706,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+CNT07,SAPUCAIA DO SUL,HV10,CENTRO,HV10,AVENIDA INDENPENDENCIA/ IPIRANGA,-29.831017,-51.151526,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+CNT08,SAPUCAIA DO SUL,HV10,CENTRO,HV10,GENERAL OSÓRIO,-29.830805,-51.152729,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+PIR01,SAPUCAIA DO SUL,HV10,COHAB,HV10,RUA JOÃO RODRIGUES/ GAVIA,-29.815835,-51.158642,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+PIR02,SAPUCAIA DO SUL,HV10,COHAB,HV10,"RUA JOÃO CANDIDO, Nº246",-29.815133,-51.159097,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+PIR03,SAPUCAIA DO SUL,HV10,COHAB,HV10,"RUA GAVEA, Nº 367",-29.814674,-51.15805,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+SJO01,SAPUCAIA DO SUL,HV10,SÃO JOSÉ,HV10,RUA JORGE LACERDA Nº 150,-29.811345,-51.151174,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+SJO02,SAPUCAIA DO SUL,HV10,SÃO JOSÉ,HV10,"RUA MAJOR DE SOUZA LIMA, Nº1221",-29.812177,-51.151961,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+DIE01,SAPUCAIA DO SUL,HV11,DIHEL,HV11,"RIO GRANDE, Nº 89",-29.82394,-51.166278,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+DIE02,SAPUCAIA DO SUL,HV11,DIHEL,HV11,"DELFIM MOREIRA, Nº 184",-29.825244,-51.168112,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+PIR04,SAPUCAIA DO SUL,HV11,DIHEL,HV11,"CAPITÃO FEBRE, Nº 201",-29.824347,-51.167796,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+SCT01,SAPUCAIA DO SUL,HV11,SANTA CATARINA,HV11,"RUA ROLANTE,Nº52",-29.818442,-51.16823,V1 / A VALIDAR,inferência por logradouro/topologia,Posição aproximada por bairro; não usar como coordenada técnica.
+SIL01,SAPUCAIA DO SUL,HV11,SILVA,HV11,RUA NEREU RAMOS / SANTA CATARINA,-29.826128,-51.163028,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+SIL02,SAPUCAIA DO SUL,HV11,SILVA,HV11,NEREU RAMOS,-29.828171,-51.162743,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+SIL03,SAPUCAIA DO SUL,HV11,DIHEL,HV11,"CAPITÃO FABRE, Nº 201",-29.825539,-51.167672,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.
+CCP01,SAPUCAIA DO SUL,HV12,CAPÃO DA CRUZ,HV12,RUA FERNANDO DE NORONHA  X  JOÃO F. DA CUNHA ,-29.837605,-51.146001,CONFIRMADO/ALTA,logradouro/endereço,Posição aproximada por bairro; não usar como coordenada técnica.

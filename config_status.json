@@ -1,0 +1,19 @@
+{
+  "versao": "V1",
+  "projeto": "Esteio + Sapucaia",
+  "regra_status": {
+    "off": "Pontuação = 0",
+    "critica": "Pontuação de 1 a 20",
+    "online": "Pontuação > 20",
+    "ss_parcial": "1 ou mais portas OFF e ao menos uma ativa",
+    "ss_total": "todas as portas existentes OFF"
+  },
+  "geografia": "posição aproximada; bairro e região/HV são a prioridade operacional",
+  "aliases": {
+    "CPC01": "CCP01",
+    "CPC02": "CCP02",
+    "CPC03": "CCP03",
+    "PIR04A1": "PIR04/P1",
+    "PIR04A2": "PIR04/P2"
+  }
+}
