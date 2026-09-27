@@ -254,17 +254,22 @@ def status_order(status):
     return {"SS TOTAL": 4, "SS PARCIAL": 3, "SEM COLETA": 2, "ONLINE": 1}.get(status, 0)
 
 
-def impact_summary(df: pd.DataFrame, col: str) -> pd.DataFrame:
+def ss_summary(df: pd.DataFrame, col: str) -> pd.DataFrame:
     if df.empty:
         return pd.DataFrame()
+    total_off = int(df["Portas_OFF"].sum())
     g = df.groupby(col, dropna=False).agg(
         Nodes=("Node", "nunique"),
-        Impactado=("Impactado", "sum"),
         Portas_OFF=("Portas_OFF", "sum"),
         SS_Total=("Status", lambda s: int((s == "SS TOTAL").sum())),
         SS_Parcial=("Status", lambda s: int((s == "SS PARCIAL").sum())),
     ).reset_index()
-    return g.sort_values(["Impactado", "Portas_OFF", "Nodes"], ascending=[False, False, False]).reset_index(drop=True)
+    g["Nodes_SS"] = g["SS_Total"] + g["SS_Parcial"]
+    g["Pct_crise"] = (g["Portas_OFF"] / total_off * 100.0) if total_off else 0.0
+    g = g[g["Portas_OFF"] > 0].copy()
+    if g.empty:
+        return g
+    return g.sort_values(["Portas_OFF", "SS_Total", "SS_Parcial", "Nodes"], ascending=[False, False, False, False]).reset_index(drop=True)
 
 
 # ---------- visual ----------
@@ -282,7 +287,7 @@ html, body, [class*="css"] { font-family: Inter, "Segoe UI", Arial, sans-serif; 
 .topbar h1 { margin:0; color:white; font-size:28px; line-height:1.08; }
 .topbar .sub { color:#cbd8ea; margin-top:5px; font-size:14px; }
 .topbar .meta { color:#9eb1cb; margin-top:6px; font-size:12px; }
-.kpi-grid { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:10px; margin:10px 0 12px; }
+.kpi-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin:10px 0 12px; }
 .kpi { background:white; border:1px solid #e4eaf2; border-radius:13px; padding:13px 15px; min-height:91px; box-shadow:0 3px 12px rgba(11,36,67,.05); }
 .kpi .label { color:#6b7892; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; }
 .kpi .value { color:#0b1736; font-size:28px; font-weight:800; margin-top:5px; }
@@ -316,7 +321,7 @@ with head_right:
         st.cache_data.clear()
         st.rerun()
 
-# Upload manual é opcional e útil para calibração da V1.
+# Upload manual é opcional e útil para calibração durante o projeto.
 with st.expander("🧪 Testar uma nova extração XPT nesta sessão", expanded=False):
     uploaded = st.file_uploader("CSV do XPERTrack", type=["csv"], accept_multiple_files=False)
     st.caption("O upload é apenas para teste e não altera os arquivos do GitHub. A versão definitiva pode ler a coleta do Drive.")
@@ -348,7 +353,7 @@ if xraw is None and LOCAL_CSV.exists():
     try:
         xraw = read_csv_bytes(LOCAL_CSV.read_bytes())
         source_file_name = LOCAL_CSV.name
-        source_mode = "coleta incluída na V1"
+        source_mode = "coleta incluída no pacote"
         source_updated = datetime.fromtimestamp(LOCAL_CSV.stat().st_mtime, tz=LOCAL_TZ)
     except Exception as e:
         source_error = (source_error + " | " if source_error else "") + str(e)
@@ -374,63 +379,46 @@ with head_left:
 if status_df.empty:
     st.error("A coleta do XPERTrack não foi carregada ou o CSV não contém Node + Pontuação.")
 elif source_error and source_mode != "Google Drive":
-    st.caption("Drive não configurado/disponível nesta V1; usando a coleta local de teste.")
+    st.caption("Drive não configurado/disponível; usando a coleta local de teste.")
 
-# ---- filtros ----
-f1, f2, f3, f4 = st.columns([1.4, 1.2, 1.8, 1.3])
-with f1:
-    cidade = st.selectbox("Cidade", ["TODAS"] + sorted(logical["Cidade"].unique().tolist()))
-city_df = logical if cidade == "TODAS" else logical[logical["Cidade"] == cidade]
-with f2:
-    regioes = sorted([x for x in city_df["Regiao"].dropna().unique().tolist() if str(x).strip()])
-    regiao = st.selectbox("Região operacional / HV", ["TODAS"] + regioes)
-reg_df = city_df if regiao == "TODAS" else city_df[city_df["Regiao"] == regiao]
-with f3:
-    bairros = sorted([x for x in reg_df["Bairro"].dropna().unique().tolist() if str(x).strip()])
-    bairro = st.selectbox("Bairro", ["TODOS"] + bairros)
-bairro_df = reg_df if bairro == "TODOS" else reg_df[reg_df["Bairro"] == bairro]
-with f4:
-    statuses = ["TODOS", "ONLINE", "SS PARCIAL", "SS TOTAL", "SEM COLETA"]
-    status_filter = st.selectbox("Status", statuses)
-filtered = bairro_df if status_filter == "TODOS" else bairro_df[bairro_df["Status"] == status_filter]
+# ---- visão geral sem filtros ----
+# Este painel é dedicado ao sem sinal. A leitura sempre mostra a operação completa
+# de Esteio + Sapucaia para facilitar a identificação imediata da concentração da crise.
+view_df = logical.copy()
 
-# KPIs seguem os filtros geográficos/status escolhidos.
-monitored = int(len(filtered))
-online = int((filtered["Status"] == "ONLINE").sum())
-partial = int((filtered["Status"] == "SS PARCIAL").sum())
-total_off = int((filtered["Status"] == "SS TOTAL").sum())
-ports_off = int(filtered["Portas_OFF"].sum())
-impactado = int(filtered["Impactado"].sum())
+monitored = int(len(view_df))
+online = int((view_df["Status"] == "ONLINE").sum())
+partial = int((view_df["Status"] == "SS PARCIAL").sum())
+total_off = int((view_df["Status"] == "SS TOTAL").sum())
+ports_off = int(view_df["Portas_OFF"].sum())
 
 cards = [
-    ("Nodes", monitored, "nodes lógicos na visão", "blue"),
+    ("Nodes", monitored, "nodes lógicos monitorados", "blue"),
     ("Online", online, "sem porta zerada", "online"),
     ("SS Parcial", partial, "1+ porta OFF", "partial"),
     ("SS Total", total_off, "todas as portas OFF", "total"),
-    ("Portas OFF", ports_off, "Pontuação = 0", "blue"),
-    ("Impactado XPT", impactado, "soma do campo Impactado", "blue"),
+    ("Portas OFF", ports_off, "Pontuação = 0", "total"),
 ]
 st.markdown("<div class='kpi-grid'>" + "".join(
     f"<div class='kpi {cl}'><div class='label'>{lab}</div><div class='value'>{fmt_int(val)}</div><div class='sub'>{sub}</div></div>"
     for lab, val, sub, cl in cards
 ) + "</div>", unsafe_allow_html=True)
 
-# Visão de crise pelo próprio campo Impactado do XPT.
-def top_label(df, col):
-    s = impact_summary(df, col)
-    if s.empty:
-        return "—", 0
-    r = s.iloc[0]
-    return str(r[col]), int(r["Impactado"])
+def top_ss_label(df, col):
+    ssum = ss_summary(df, col)
+    if ssum.empty:
+        return "SEM PORTAS OFF", 0, 0.0
+    r = ssum.iloc[0]
+    return str(r[col]), int(r["Portas_OFF"]), float(r["Pct_crise"])
 
-top_city, top_city_imp = top_label(filtered, "Cidade")
-top_reg, top_reg_imp = top_label(filtered, "Regiao")
-top_bairro, top_bairro_imp = top_label(filtered, "Bairro")
+top_city, top_city_off, top_city_pct = top_ss_label(view_df, "Cidade")
+top_reg, top_reg_off, top_reg_pct = top_ss_label(view_df, "Regiao")
+top_bairro, top_bairro_off, top_bairro_pct = top_ss_label(view_df, "Bairro")
 st.markdown(
     "<div class='crisis-grid'>"
-    f"<div class='crisis'><div class='t'>Cidade com maior Impactado</div><div class='v'>{esc(top_city)}</div><div class='s'>{fmt_int(top_city_imp)} no campo Impactado</div></div>"
-    f"<div class='crisis'><div class='t'>Região/HV com maior Impactado</div><div class='v'>{esc(top_reg)}</div><div class='s'>{fmt_int(top_reg_imp)} no campo Impactado</div></div>"
-    f"<div class='crisis'><div class='t'>Bairro com maior Impactado</div><div class='v'>{esc(top_bairro)}</div><div class='s'>{fmt_int(top_bairro_imp)} no campo Impactado</div></div>"
+    f"<div class='crisis'><div class='t'>Cidade com maior sem sinal</div><div class='v'>{esc(top_city)}</div><div class='s'>{fmt_int(top_city_off)} portas OFF • {top_city_pct:.1f}% da crise</div></div>"
+    f"<div class='crisis'><div class='t'>Região/HV com maior sem sinal</div><div class='v'>{esc(top_reg)}</div><div class='s'>{fmt_int(top_reg_off)} portas OFF • {top_reg_pct:.1f}% da crise</div></div>"
+    f"<div class='crisis'><div class='t'>Bairro com maior sem sinal</div><div class='v'>{esc(top_bairro)}</div><div class='s'>{fmt_int(top_bairro_off)} portas OFF • {top_bairro_pct:.1f}% da crise</div></div>"
     "</div>", unsafe_allow_html=True
 )
 
@@ -439,30 +427,30 @@ st.markdown("<div class='note'><b>Mapa operacional:</b> os pontos são aproximad
 # Busca centraliza e não muda KPIs.
 search_col, info_col = st.columns([2.1, 4.9])
 with search_col:
-    nodes_search = sorted(filtered["Node"].dropna().unique().tolist())
+    nodes_search = sorted(view_df["Node"].dropna().unique().tolist())
     chosen = st.selectbox("🔎 Localizar node", [""] + nodes_search, format_func=lambda x: "Digite ou selecione o node..." if not x else x)
 with info_col:
     if chosen:
-        rr = filtered[filtered["Node"] == chosen]
+        rr = view_df[view_df["Node"] == chosen]
         if not rr.empty:
             r = rr.iloc[0]
             st.markdown(
                 f"<div class='focus'><b>📍 {esc(r['Node'])}</b> — {esc(r['Status'])}<br>"
                 f"<span class='small'>{esc(r['Cidade'])} • {esc(r['Regiao'])} • {esc(r['Bairro'])} • {esc(r['Endereco'])}</span><br>"
-                f"<span class='small'>{esc(r['Portas_popup'] or 'Sem detalhe de porta')} • Impactado: {fmt_int(r['Impactado'])}</span></div>",
+                f"<span class='small'>{esc(r['Portas_popup'] or 'Sem detalhe de porta')}</span></div>",
                 unsafe_allow_html=True,
             )
 
-mapdf = filtered[filtered["Latitude"].notna() & filtered["Longitude"].notna()].copy()
+mapdf = view_df[view_df["Latitude"].notna() & view_df["Longitude"].notna()].copy()
 focus = mapdf[mapdf["Node"] == chosen].copy() if chosen else pd.DataFrame()
 if mapdf.empty:
-    st.warning("Nenhum node disponível para o mapa com os filtros escolhidos.")
+    st.warning("Nenhum node disponível para o mapa.")
 else:
     if not focus.empty:
         center_lat, center_lon, zoom = float(focus.iloc[0]["Latitude"]), float(focus.iloc[0]["Longitude"]), 14.0
     else:
         center_lat, center_lon = float(mapdf["Latitude"].mean()), float(mapdf["Longitude"].mean())
-        zoom = 11.7 if cidade == "TODAS" else 12.4
+        zoom = 11.7
     layers = [pdk.Layer(
         "ScatterplotLayer", data=mapdf, get_position="[Longitude, Latitude]", get_radius=55,
         radius_min_pixels=6, radius_max_pixels=15, get_fill_color="color",
@@ -480,7 +468,7 @@ else:
                 "<div style='font-size:18px;font-weight:800;margin-bottom:5px'>{Node}</div>"
                 "<div><b>Status:</b> {Status}</div><div><b>Cidade:</b> {Cidade}</div>"
                 "<div><b>Região/HV:</b> {Regiao}</div><div><b>Bairro:</b> {Bairro}</div>"
-                "<div><b>Portas OFF:</b> {Portas_OFF}/{Total_portas}</div><div><b>Impactado XPT:</b> {Impactado}</div>"
+                "<div><b>Portas OFF:</b> {Portas_OFF}/{Total_portas}</div>"
                 "<div style='border-top:1px solid rgba(255,255,255,.2);margin:7px 0 5px'></div>"
                 "<div>{Portas_popup}</div><div style='margin-top:5px'><b>Endereço base:</b> {Endereco}</div>"
                 "</div>",
@@ -493,46 +481,46 @@ else:
     )
     st.pydeck_chart(deck, use_container_width=True, height=560)
 
-# ---- rankings de crise ----
-st.markdown("### 📊 Concentração do impacto")
+# ---- concentração do sem sinal ----
+st.markdown("### 📊 Concentração do sem sinal")
 r1, r2 = st.columns(2)
 with r1:
-    st.markdown("#### Bairros mais impactados")
-    bsum = impact_summary(filtered, "Bairro")
+    st.markdown("#### 🏘️ Bairros mais impactados")
+    bsum = ss_summary(view_df, "Bairro")
     if bsum.empty:
-        st.info("Sem dados.")
+        st.success("Nenhuma porta OFF na leitura atual.")
     else:
-        show = bsum.head(12).copy()
-        show.columns = ["Bairro", "Nodes", "Impactado XPT", "Portas OFF", "SS Total", "SS Parcial"]
+        show = bsum.head(12)[["Bairro", "Portas_OFF", "Pct_crise", "Nodes_SS", "SS_Total", "SS_Parcial"]].copy()
+        show["Pct_crise"] = show["Pct_crise"].round(1).map(lambda x: f"{x:.1f}%")
+        show.columns = ["Bairro", "Portas OFF", "% da crise", "Nodes SS", "SS Total", "SS Parcial"]
         st.dataframe(show, use_container_width=True, hide_index=True)
 with r2:
-    st.markdown("#### Regiões/HV mais impactadas")
-    rsum = impact_summary(filtered, "Regiao")
+    st.markdown("#### 📍 Regiões/HV mais impactadas")
+    rsum = ss_summary(view_df, "Regiao")
     if rsum.empty:
-        st.info("Sem dados.")
+        st.success("Nenhuma porta OFF na leitura atual.")
     else:
-        show = rsum.head(12).copy()
-        show.columns = ["Região/HV", "Nodes", "Impactado XPT", "Portas OFF", "SS Total", "SS Parcial"]
+        show = rsum.head(12)[["Regiao", "Portas_OFF", "Pct_crise", "Nodes_SS", "SS_Total", "SS_Parcial"]].copy()
+        show["Pct_crise"] = show["Pct_crise"].round(1).map(lambda x: f"{x:.1f}%")
+        show.columns = ["Região/HV", "Portas OFF", "% da crise", "Nodes SS", "SS Total", "SS Parcial"]
         st.dataframe(show, use_container_width=True, hide_index=True)
 
-c1, c2 = st.columns(2)
-with c1:
-    st.markdown("### 🔴 Sem sinal")
-    crit = filtered[filtered["Portas_OFF"] > 0].copy()
-    if crit.empty:
-        st.success("Nenhuma porta OFF na leitura atual para os filtros selecionados.")
-    else:
-        crit["_sev"] = crit["Status"].map(status_order)
-        crit = crit.sort_values(["_sev", "Portas_OFF", "Impactado"], ascending=[False, False, False])
-        st.dataframe(crit[["Node","Cidade","Regiao","Bairro","Status","Portas_OFF","Total_portas","Impactado"]], use_container_width=True, hide_index=True)
-with c2:
-    st.markdown("### 🎯 Nodes com maior Impactado XPT")
-    topn = filtered.sort_values(["Impactado","Portas_OFF"], ascending=[False,False]).head(12)
-    st.dataframe(topn[["Node","Cidade","Regiao","Bairro","Status","Impactado","Estressado","Total_XPT"]], use_container_width=True, hide_index=True)
+st.markdown("### 🔴 Nodes sem sinal")
+crit = view_df[view_df["Portas_OFF"] > 0].copy()
+if crit.empty:
+    st.success("Nenhuma porta OFF na leitura atual.")
+else:
+    crit["_sev"] = crit["Status"].map(status_order)
+    crit = crit.sort_values(["_sev", "Portas_OFF", "Node"], ascending=[False, False, True])
+    st.dataframe(
+        crit[["Node","Cidade","Regiao","Bairro","Status","Portas_OFF","Total_portas","Portas_popup"]],
+        use_container_width=True,
+        hide_index=True,
+    )
 
 pending = logical[logical["Precisao_Bairro"].astype(str).str.contains("VALIDAR|SEM TOPOLOGIA", case=False, regex=True)].copy()
-with st.expander(f"🧭 Base V1 — bairros/regiões para validar ({len(pending)})", expanded=False):
-    st.caption("Esses pontos foram mantidos no mapa, mas a classificação de bairro ainda é uma aproximação de V1. Corrigimos após comparar visualmente com a operação.")
+with st.expander(f"🧭 Base — bairros/regiões para validar ({len(pending)})", expanded=False):
+    st.caption("Esses pontos foram mantidos no mapa, mas a classificação de bairro ainda é uma aproximação inicial. Corrigimos após comparar visualmente com a operação.")
     st.dataframe(pending[["Node","Cidade","Regiao","Bairro","Endereco","Precisao_Bairro"]], use_container_width=True, hide_index=True)
 
 st.caption("Legenda principal: 🟢 Online • 🟡 SS Parcial • 🔴 SS Total • cinza = sem coleta. Porta crítica 1–20 fica nos detalhes e não cria uma quarta cor principal.")

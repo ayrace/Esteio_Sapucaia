@@ -1,17 +1,17 @@
-# Painel Geográfico de Nodes — Esteio + Sapucaia | V1
+# Painel Geográfico de Nodes — Esteio + Sapucaia | V2
 
-Versão inicial para calibração operacional do mapa conjunto de **Esteio + Sapucaia do Sul**.
+V2 para calibração operacional do mapa conjunto de **Esteio + Sapucaia do Sul**.
 
 ## Objetivo
-A posição exata do node não é o objetivo desta aplicação. O foco é enxergar rapidamente **onde está concentrado o impacto**, usando:
+A posição exata do node não é o objetivo desta aplicação. O foco é enxergar rapidamente **onde está concentrado o sem sinal**, usando:
 
 - Cidade
 - Região operacional / HV
 - Bairro
 - Status do node: Online, SS Parcial ou SS Total
-- Campo `Impactado` da extração do XPERTrack
+- Quantidade de portas OFF (`Pontuação = 0`)
 
-As coordenadas da V1 são aproximadas por bairro e servem apenas para visualização de concentração geográfica.
+As coordenadas da V2 são aproximadas por bairro e servem apenas para visualização de concentração geográfica.
 
 ## Regras XPERTrack
 - `Pontuação = 0` → porta OFF
@@ -27,7 +27,7 @@ As coordenadas da V1 são aproximadas por bairro e servem apenas para visualiza�
 - `EIO42-1` → mantido no painel como `EIO42`, ainda sem cadastro de topologia/HV/bairro validado
 
 ## Atualização da coleta
-A V1 abre com `data/ESTEIO_SAPUCAIA.csv` incluído no pacote.
+A V2 abre com `data/ESTEIO_SAPUCAIA.csv` incluído no pacote.
 
 Também há um uploader dentro do painel para testar uma nova extração sem alterar os arquivos.
 
@@ -54,8 +54,16 @@ DRIVE_FILE_ID = "ID_DO_ARQUIVO"
 ## Implantação no Streamlit
 1. Envie os arquivos para um repositório GitHub.
 2. No Streamlit Community Cloud, selecione `streamlit_app.py`.
-3. A V1 já funciona com o CSV incluído.
+3. A V2 já funciona com o CSV incluído.
 4. Após validar bairros/regiões, configure o Drive para a atualização automática.
 
-## O que revisar na V1
-Abra o expander **“Base V1 — bairros/regiões para validar”**. Ele mostra os nodes em que o bairro foi inferido e ainda deve ser conferido visualmente/operacionalmente.
+## O que revisar na V2
+Abra o expander **“Base — bairros/regiões para validar”**. Ele mostra os nodes em que o bairro foi inferido e ainda deve ser conferido visualmente/operacionalmente.
+
+
+## Ajustes da V2
+- Removidos os filtros de cidade, região/HV, bairro e status da tela principal.
+- Removida da interface toda leitura de `Impactado`, `Estressado` e `Total` do XPT.
+- Painel dedicado exclusivamente ao **sem sinal**, com base em portas com `Pontuação = 0`.
+- Rankings de cidade, região/HV e bairro agora usam **Portas OFF** e participação na crise.
+- A lista operacional mostra somente nodes com SS Parcial ou SS Total quando houver ocorrência.

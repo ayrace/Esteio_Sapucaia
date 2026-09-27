@@ -1,5 +1,5 @@
 {
-  "versao": "V1",
+  "versao": "V2",
   "projeto": "Esteio + Sapucaia",
   "regra_status": {
     "off": "Pontuação = 0",
@@ -15,5 +15,6 @@
     "CPC03": "CCP03",
     "PIR04A1": "PIR04/P1",
     "PIR04A2": "PIR04/P2"
-  }
+  },
+  "foco": "sem sinal; concentração por portas OFF, bairro e região/HV"
 }
